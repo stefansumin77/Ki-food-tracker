@@ -26,9 +26,14 @@ body{color:var(--ink)}
   background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.07) 38.3%,rgba(255,255,255,.07) 39.4%,transparent 39.7%),linear-gradient(115deg,transparent 62%,rgba(255,255,255,.045) 62.2%,rgba(255,255,255,.045) 62.8%,transparent 63%)}
 /* Laufbahn: Stadion-Bahnen mit farbigen Lichtspuren, eine pro Makro */
 .theme-track{position:absolute;inset:0;width:100%;height:100%}
-.lane{animation:nouri-run linear infinite}
+/* Die Bahnen füllen sich im Lauf des Tages: außen Kalorien, dann Protein, Kohlenhydrate, Fett.
+   Der Füllstand kommt aus app.js (renderTrack), 100 % = Tagesziel erreicht. */
+.lane-base{stroke:rgba(255,255,255,.09);stroke-width:2}
+.lane-fill{stroke-width:7;stroke-dasharray:0 100;opacity:.55;transition:stroke-dasharray 1.8s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.lane-fill.complete{opacity:.9;filter:drop-shadow(0 0 6px currentColor)}
+.lane-run{stroke-width:5;stroke-dasharray:5 95;animation:nouri-run linear infinite}
 .lane-1{animation-duration:9s}.lane-2{animation-duration:11s}.lane-3{animation-duration:13s}.lane-4{animation-duration:15s}
-@keyframes nouri-run{from{stroke-dashoffset:0}to{stroke-dashoffset:-1400}}
+@keyframes nouri-run{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
 
 @keyframes nouri-fade{from{opacity:0}to{opacity:1}}
 @keyframes nouri-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -164,7 +169,8 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 
 /* Weniger Effekte, wenn das Gerät darum bittet oder Glas nicht unterstützt */
 @media (prefers-reduced-motion:reduce){
-  .lane,.calorie-card,.calorie-card:after,#calorie-progress,.macro-card,.last-meal,.capture-cta,.dashboard-secondary,.bottom-nav{animation:none!important}
+  .lane-fill{transition:none}
+  .lane-run,.calorie-card,.calorie-card:after,#calorie-progress,.macro-card,.last-meal,.capture-cta,.dashboard-secondary,.bottom-nav{animation:none!important}
 }
 @media (prefers-reduced-transparency:reduce){
   .glass,.calorie-card,.macro-card,.latest-meal-card,.last-meal .empty-state,.meal-row,.stat,.analysis-food,.bottom-nav,.scan-capture,dialog{background:#050506;-webkit-backdrop-filter:none;backdrop-filter:none}

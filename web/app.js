@@ -36,12 +36,14 @@ function render(){
  $('#calories-left').textContent=fmt(Math.abs(remaining));$('#remaining-label').textContent=remaining>=0?'kcal übrig':'kcal über dem Ziel';$('#calories-eaten').textContent=fmt(t.kcal);$('#calories-goal').textContent=fmt(g.kcal);
  $('#calorie-progress').style.strokeDashoffset=477.52*(1-Math.min(t.kcal/g.kcal,1));
  for(const k of ['protein','carbs','fat']){$('#'+k+'-eaten').textContent=fmt(t[k]);$('#'+k+'-goal').textContent=fmt(g[k]);$('#'+k+'-percent').textContent=fmt(t[k]/g[k]*100)+' %';$('#'+k+'-bar').style.width=Math.min(t[k]/g[k]*100,100)+'%';}
+ renderTrack(t,g);
  const water=state.demo&&selectedDay===today?1250:Number(state.water[selectedDay]||0);$('#water-eaten').textContent=fmt(water/1000,1);$('#water-goal').textContent=fmt(g.water/1000,1);
  const glassCount=Math.min(Math.ceil(g.water/250),12);$('#water-glasses').innerHTML=Array.from({length:glassCount},(_,i)=>`<span class="${i<water/250?'filled':''}" title="${Math.min((i+1)*250,g.water)} ml">${icon('glass')}</span>`).join('');
  $('#meal-list').innerHTML=renderMeals(entries);$('#diary-list').innerHTML=renderMeals(entries,true);renderLatestMeal(entries);
  $('#daily-details').innerHTML=`<div class="details-grid"><div><span>Kalorien gesamt</span><strong>${fmt(t.kcal)} <small>kcal</small></strong></div><div><span>Ballaststoffe</span><strong>${t.fiber===null?'k. A.':fmt(t.fiber,1)} <small>g</small></strong></div><div><span>Davon Zucker</span><strong>${t.sugar===null?'k. A.':fmt(t.sugar,1)} <small>g</small></strong></div></div>`;
  renderCharts();hydrate();
 }
+function renderTrack(t,g){for(const k of ['kcal','protein','carbs','fat']){const lane=document.querySelector(`.lane-fill[data-lane="${k}"]`);if(!lane)continue;const share=g[k]>0?Math.max(0,Math.min(Number(t[k])/g[k],1)):0;lane.style.strokeDasharray=`${(share*100).toFixed(2)} 100`;lane.classList.toggle('complete',share>=1);}}
 function renderLatestMeal(entries){
  const host=$('#last-meal');if(!host)return;
  const latest=entries.slice().sort((a,b)=>(b.time||'').localeCompare(a.time||''))[0];
