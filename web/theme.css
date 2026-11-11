@@ -16,12 +16,12 @@
 }
 
 /* ---------- Hintergrund ---------- */
-html{background:#2d2f35}
+html{background:#363a46}
 body{background:transparent}
 body{color:var(--ink)}
 .ambient-shape{display:none}
 .theme-backdrop{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
-  background:linear-gradient(170deg,#4a4c55 0%,#3b3d44 50%,#2d2f35 100%)}
+  background:radial-gradient(90% 55% at 50% 0%,rgba(120,132,170,.35) 0%,rgba(120,132,170,0) 70%),linear-gradient(170deg,#5d6273 0%,#484d5c 50%,#363a46 100%)}
 /* Laufbahn: Stadion-Bahnen mit farbigen Lichtspuren, eine pro Makro */
 .theme-track{position:absolute;inset:0;width:100%;height:100%}
 /* Die Bahnen füllen sich im Lauf des Tages: außen Kalorien, dann Protein, Kohlenhydrate, Fett.
@@ -202,3 +202,16 @@ h1,h2,h3,strong{font-weight:700}
 .glass{border-radius:24px}
 .latest-meal-copy h3,.meal-info h3,.scan-result h3,.privacy-block h3{font-weight:700}
 .modal-heading h2{font-weight:800}
+
+/* Tagebuch nach Mahlzeiten gegliedert: Frühstück, Mittagessen, Abendessen, Snack */
+.meal-group{display:grid;gap:10px}
+.meal-group+.meal-group{margin-top:10px}
+.meal-group-head{display:flex;align-items:center;gap:10px;padding:0 4px}
+.meal-group-head h2{flex:1;font-size:16px;font-weight:800;letter-spacing:-.3px}
+.meal-group-icon{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);display:inline-flex;align-items:center;justify-content:center}
+.meal-group-icon svg{width:16px;height:16px}
+.meal-group-kcal{font-size:12px;font-weight:600;color:var(--muted)}
+.icon-button.meal-group-add{width:34px;height:34px;background:var(--glass-white);color:#111;border:1px solid #fff;box-shadow:var(--glass-white-shadow)}
+.icon-button.meal-group-add:hover{background:#fff;color:#111}
+.meal-group-add svg{width:16px;height:16px}
+.meal-group-empty{margin:0;padding:12px 16px;border-radius:20px;border:1px dashed rgba(255,255,255,.2);color:var(--muted);font-size:12px}
