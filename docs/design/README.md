@@ -18,6 +18,8 @@ Umgesetzt in `web/theme.css` (wird nach `web/style.css` geladen). Aufbau und Fun
 
 ## Dateien
 
+- `rundgang-1.png`, `rundgang-2.png`, `rundgang-3.png` – Rundgang durch alle Bildschirme der App (aktueller Stand)
+
 - `Glas.dc.html` – der gewählte Entwurf (A2)
 - `Laufbahn.dc.html`, `Puls.dc.html`, `Formen.dc.html` – alternative Hintergrund-Ideen
 - `Main.dc.html` (A · Frisch), `Kraft.dc.html` (B), `Sanft.dc.html` (C) – frühere Richtungen
