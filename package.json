@@ -1,0 +1,14 @@
+{
+  "name": "nouri-nutrition-diary",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Privates Ernährungstagebuch mit KI-Fotoanalyse",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

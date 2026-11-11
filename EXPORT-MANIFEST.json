@@ -1,0 +1,280 @@
+{
+  "project": "Nouri",
+  "sourceCommit": "9b78a46acf4c1b8d2df869f3ea3c3f850300fe9b",
+  "exportedAt": "2026-11-11T19:51:13.950620+00:00",
+  "sourceUnmodified": true,
+  "originalFiles": [
+    {
+      "sourcePath": ".env.example",
+      "exportPath": ".env.example",
+      "bytes": 416,
+      "sha256": "a91ba3ccf6257686f3685fb6c42d3f814c6fc2789a895eec5d1dba54baaecbce"
+    },
+    {
+      "sourcePath": ".gitignore",
+      "exportPath": ".gitignore",
+      "bytes": 55,
+      "sha256": "be7ff6de889f9c0d39332c581ba324504b9d48fbe7b1001cea138155820fe6e3"
+    },
+    {
+      "sourcePath": ".openai/hosting.json",
+      "exportPath": ".openai/hosting.json",
+      "bytes": 62,
+      "sha256": "cf0b7496824dcc1f018e54b20fc4528900b1266b7a396cd5f8aa7642b70b3209"
+    },
+    {
+      "sourcePath": "README.md",
+      "exportPath": "README.original.md",
+      "bytes": 5014,
+      "sha256": "7e66deb19898f5bfd324df9bdec312314da2faabcd2ed621fb9d07a82da3e6a0"
+    },
+    {
+      "sourcePath": "dist/.openai/hosting.json",
+      "exportPath": "dist/.openai/hosting.json",
+      "bytes": 62,
+      "sha256": "cf0b7496824dcc1f018e54b20fc4528900b1266b7a396cd5f8aa7642b70b3209"
+    },
+    {
+      "sourcePath": "dist/server/index.js",
+      "exportPath": "dist/server/index.js",
+      "bytes": 523750,
+      "sha256": "2b4339adbdb5236a813109cab11e53692fe6e19dbd1c8057039fd8cc9bb46f06"
+    },
+    {
+      "sourcePath": "docs/implementation-report.md",
+      "exportPath": "docs/implementation-report.md",
+      "bytes": 6736,
+      "sha256": "aa997bf7ba05991a92d1c04f5285de15e02ea9e05191e1f96ed3e46eec0cfdd1"
+    },
+    {
+      "sourcePath": "docs/nutrition-integration.md",
+      "exportPath": "docs/nutrition-integration.md",
+      "bytes": 8273,
+      "sha256": "fb5696ee08308bfecca4f789f3b861106568aec9a04cc5dada7f53492098b11e"
+    },
+    {
+      "sourcePath": "docs/nutrition-sources.md",
+      "exportPath": "docs/nutrition-sources.md",
+      "bytes": 3095,
+      "sha256": "82f8a3067bef25052079cdde9d124b68c789fdaed0dcb56de1f1fe2c68c2f172"
+    },
+    {
+      "sourcePath": "package-lock.json",
+      "exportPath": "package-lock.json",
+      "bytes": 14488,
+      "sha256": "3a691fab553007dbbf57d63ad5067ce373664353e39c1beaa48cacf1deae1f61"
+    },
+    {
+      "sourcePath": "package.json",
+      "exportPath": "package.json",
+      "bytes": 315,
+      "sha256": "e244251f3e29f9847d6a28ca2bd74d90810ef449df8fc37d875e4af9dde307a6"
+    },
+    {
+      "sourcePath": "scripts/build.mjs",
+      "exportPath": "scripts/build.mjs",
+      "bytes": 2005,
+      "sha256": "1a04ff0a9d648181ab799580e76b4f9ad8a8afd5e62c18b96cd275cb9c9f8c09"
+    },
+    {
+      "sourcePath": "scripts/publish-source.mjs",
+      "exportPath": "scripts/publish-source.mjs",
+      "bytes": 1820,
+      "sha256": "8ab3af99f45f0f4070e64d26fc7c0cc17a039227c69ca117a26811df23f486f9"
+    },
+    {
+      "sourcePath": "scripts/test.mjs",
+      "exportPath": "scripts/test.mjs",
+      "bytes": 401,
+      "sha256": "5141c49fe419307e3b39b8cd8b9ce79e0614703ec805d83b1e2e3d3661f8d355"
+    },
+    {
+      "sourcePath": "server/api.mjs",
+      "exportPath": "server/api.mjs",
+      "bytes": 4072,
+      "sha256": "18668c38b82692649e516a7b22ff8617a45d63e228c84b8e20b2af453c551b34"
+    },
+    {
+      "sourcePath": "server/api.test.mjs",
+      "exportPath": "server/api.test.mjs",
+      "bytes": 8432,
+      "sha256": "b582ddec338555b5419e227fbeb3186c9b834768911b7681ffe255676fa7b004"
+    },
+    {
+      "sourcePath": "server/products.mjs",
+      "exportPath": "server/products.mjs",
+      "bytes": 10608,
+      "sha256": "e6391537bfb2b19cf76bc3ff5278e0b562aecf656cf7046723ae127d0530f865"
+    },
+    {
+      "sourcePath": "server/security.mjs",
+      "exportPath": "server/security.mjs",
+      "bytes": 3223,
+      "sha256": "f7090def3b48f3761b428712b10ad5707afd79a40fa9b90ac1044309baaa9f29"
+    },
+    {
+      "sourcePath": "server/vision.mjs",
+      "exportPath": "server/vision.mjs",
+      "bytes": 14708,
+      "sha256": "c07e3352d53fb208d03409a8461d14ee840e599168591b378a148679539a99be"
+    },
+    {
+      "sourcePath": "server/worker.mjs",
+      "exportPath": "server/worker.mjs",
+      "bytes": 1872,
+      "sha256": "e6a989096f2175461e3088c49c2cdc918a43c7adf8399b22dc5a6bec5700eaf4"
+    },
+    {
+      "sourcePath": "tests/app.test.mjs",
+      "exportPath": "tests/app.test.mjs",
+      "bytes": 23996,
+      "sha256": "bd5a4c3495d59ea8754dc0a0cfbea3a91730339ae979c4a8d406b0be2229ed98"
+    },
+    {
+      "sourcePath": "tests/features.test.mjs",
+      "exportPath": "tests/features.test.mjs",
+      "bytes": 16006,
+      "sha256": "8b4313eb5e72b95adf224418e75b780da9053f49e73ee894ad6272ac949fa323"
+    },
+    {
+      "sourcePath": "tests/metabolism.test.mjs",
+      "exportPath": "tests/metabolism.test.mjs",
+      "bytes": 10432,
+      "sha256": "6717c705c24b24728546642c1cc8dcf356fc63225b4509b508f87f09d1d83f08"
+    },
+    {
+      "sourcePath": "tests/nutrition.test.mjs",
+      "exportPath": "tests/nutrition.test.mjs",
+      "bytes": 2386,
+      "sha256": "365c5b205bac12bb928cd4ace158e490c7f536d10299674063fa419cb5bb991e"
+    },
+    {
+      "sourcePath": "tests/products.test.mjs",
+      "exportPath": "tests/products.test.mjs",
+      "bytes": 4993,
+      "sha256": "420f0a718121f008cdfaab0dc364f90a4171f592089fca5384d5dbe7606d10ab"
+    },
+    {
+      "sourcePath": "tests/recipes.test.mjs",
+      "exportPath": "tests/recipes.test.mjs",
+      "bytes": 1845,
+      "sha256": "49c8526230f2a0680b6c5e01abf516526faabe745625fa3da39a20511e523233"
+    },
+    {
+      "sourcePath": "tests/security.test.mjs",
+      "exportPath": "tests/security.test.mjs",
+      "bytes": 2456,
+      "sha256": "bb7ac279c3e167da58951db79a05ace814b20bfe1c73b7ffd8ba10fb5b4fbc5d"
+    },
+    {
+      "sourcePath": "tests/storage.test.mjs",
+      "exportPath": "tests/storage.test.mjs",
+      "bytes": 8003,
+      "sha256": "acb05a422dac9be063e72dd8687145f47be74e0b1aecb74c4235579e8468d620"
+    },
+    {
+      "sourcePath": "tests/vision.test.mjs",
+      "exportPath": "tests/vision.test.mjs",
+      "bytes": 5297,
+      "sha256": "605f331acb669dc49894e6cb894c66cb4f875057d470a0406e89d64f7b6c710a"
+    },
+    {
+      "sourcePath": "tests/worker.test.mjs",
+      "exportPath": "tests/worker.test.mjs",
+      "bytes": 6016,
+      "sha256": "c11bb2e1e298bc3c936aa664d632f8339d250f0b7ee8baefdac60987dbf335bd"
+    },
+    {
+      "sourcePath": "web/app.js",
+      "exportPath": "web/app.js",
+      "bytes": 48519,
+      "sha256": "568f60f11dfa7b621d21e8d3f85eb3ffa58eaad721e0e77126dd9371904322d4"
+    },
+    {
+      "sourcePath": "web/assets/bowl.jpg",
+      "exportPath": "web/assets/bowl.jpg",
+      "bytes": 116641,
+      "sha256": "dd597b8dc969eef4e5e4a48d309b68dc9196b60345c87b1dee12aba21ed8ec6f"
+    },
+    {
+      "sourcePath": "web/assets/breakfast.jpg",
+      "exportPath": "web/assets/breakfast.jpg",
+      "bytes": 20610,
+      "sha256": "4423739e89f4653985d0f0541f2e78774308a298581968248f8bab40f3645da4"
+    },
+    {
+      "sourcePath": "web/assets/icon.svg",
+      "exportPath": "web/assets/icon.svg",
+      "bytes": 335,
+      "sha256": "583d070e5fc4d6f08bff29ae7cc431edef7cbc2878d74e99cfa3f3299a0c93fa"
+    },
+    {
+      "sourcePath": "web/assets/salad.jpg",
+      "exportPath": "web/assets/salad.jpg",
+      "bytes": 25208,
+      "sha256": "f2eb6b59461973ff4ceabf510de56feae1584d26a8490056d952cda06325b0b5"
+    },
+    {
+      "sourcePath": "web/feature-store.js",
+      "exportPath": "web/feature-store.js",
+      "bytes": 10977,
+      "sha256": "bd8dd8823b9c5e29191ec9ac1cbff5bec36bcafd3204c68795862e6d7ab23fad"
+    },
+    {
+      "sourcePath": "web/features.js",
+      "exportPath": "web/features.js",
+      "bytes": 59649,
+      "sha256": "f47d0d311d82417aa6cf687868ae4abf1ee1961b646b87d4681e1d8390eff9be"
+    },
+    {
+      "sourcePath": "web/index.html",
+      "exportPath": "web/index.html",
+      "bytes": 9313,
+      "sha256": "0415eee44d9566abdd292ebd6fa0bda85e78ba289cab55c240b097866233b7d1"
+    },
+    {
+      "sourcePath": "web/metabolism-ui.js",
+      "exportPath": "web/metabolism-ui.js",
+      "bytes": 14858,
+      "sha256": "cac20980f37444b7e712ad802b8f405699fc93dc87c36490a4a85e46b7d58ec8"
+    },
+    {
+      "sourcePath": "web/metabolism.js",
+      "exportPath": "web/metabolism.js",
+      "bytes": 16899,
+      "sha256": "244a29b3bce1be71d01c0639ef4b68fa9ed4c9a4d4358d713fd318bbc9ca5972"
+    },
+    {
+      "sourcePath": "web/nutrition.js",
+      "exportPath": "web/nutrition.js",
+      "bytes": 6258,
+      "sha256": "a6f2e67d42c9d94e54c15c50c7d536f8590085ff6a13a2fcdd175836c25b9f69"
+    },
+    {
+      "sourcePath": "web/recipes.js",
+      "exportPath": "web/recipes.js",
+      "bytes": 3277,
+      "sha256": "4313b9cddf09700910e55fedea82b5d6907097192e2fd86a79d9f4e44dc30175"
+    },
+    {
+      "sourcePath": "web/style.css",
+      "exportPath": "web/style.css",
+      "bytes": 30143,
+      "sha256": "34db08ea56f721b1f65ddccaf04889bf3055133ac072ba057038de293446edb9"
+    }
+  ],
+  "additionalExportFiles": [
+    "README.md",
+    "database/README.md",
+    "EXPORT-MANIFEST.json"
+  ],
+  "excluded": [
+    ".git",
+    "node_modules",
+    "real environment files",
+    "caches",
+    "temporary logs and archives"
+  ],
+  "personalBrowserDataIncluded": false,
+  "serverDatabase": "none"
+}
