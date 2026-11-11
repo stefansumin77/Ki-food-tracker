@@ -215,3 +215,47 @@ h1,h2,h3,strong{font-weight:700}
 .icon-button.meal-group-add:hover{background:#fff;color:#111}
 .meal-group-add svg{width:16px;height:16px}
 .meal-group-empty{margin:0;padding:12px 16px;border-radius:20px;border:1px dashed rgba(255,255,255,.2);color:var(--muted);font-size:12px}
+
+/* Laufbahn-Fokus: Tipp auf eine Makro-Kachel oder den Kalorienring holt die Bahnen nach vorne */
+.macro-card{position:relative}
+.macro-hit{position:absolute;inset:0;z-index:2;border-radius:inherit;background:transparent;cursor:pointer}
+.calorie-ring .macro-hit{border-radius:50%}
+.macro-hit:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.app-shell{transition:opacity .4s ease,filter .4s ease}
+body.track-focusing .app-shell{opacity:.1;filter:blur(3px);pointer-events:none}
+body.track-focusing .theme-backdrop{z-index:15}
+.theme-track [data-lane]{transition:opacity .4s ease,stroke .4s ease}
+body.track-focusing .lane-base{stroke:rgba(255,255,255,.12)}
+body.track-focusing .lane-fill{opacity:.95}
+body.track-focusing .lane-run{opacity:.8}
+body.track-focusing .theme-track [data-lane]:not(.is-focus){opacity:.14}
+/* Das fehlende Stück der gewählten Bahn ist gepunktet */
+body.track-focusing .lane-base.is-focus{stroke:rgba(255,255,255,.6);stroke-width:3;stroke-dasharray:.6 1.4}
+body.track-focusing .lane-fill.is-focus{filter:drop-shadow(0 0 8px currentColor)}
+.track-focus{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom));animation:nouri-fade .3s ease-out}
+.track-focus-card{width:min(420px,100%);background:rgba(6,6,8,.92);border:1px solid var(--glass-edge);border-radius:28px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.track-focus-card h2{font-size:20px;font-weight:800;margin-top:6px}
+.track-focus-value{display:block;font-size:34px;font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-top:4px}
+.track-focus-value[data-lane="kcal"]{color:var(--accent-lime)}
+.track-focus-value[data-lane="protein"]{color:var(--accent-blue)}
+.track-focus-value[data-lane="carbs"]{color:var(--accent-amber)}
+.track-focus-value[data-lane="fat"]{color:var(--accent-coral)}
+.track-focus-card>p{color:var(--muted);margin-top:4px;font-size:13px}
+.track-legend{display:grid;gap:6px;margin:16px 0}
+.track-legend-row{display:grid;grid-template-columns:12px 1fr auto;align-items:center;gap:10px;min-height:44px;padding:8px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-align:left;font-weight:700;color:#fff}
+.track-legend-row:hover{background:rgba(255,255,255,.1)}
+.track-legend-row.active{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.32)}
+.track-legend-row span:last-child{color:var(--muted);font-weight:600;font-size:13px}
+.track-dot{width:12px;height:12px;border-radius:50%}
+.track-dot[data-lane="kcal"]{background:var(--accent-lime)}
+.track-dot[data-lane="protein"]{background:var(--accent-blue)}
+.track-dot[data-lane="carbs"]{background:var(--accent-amber)}
+.track-dot[data-lane="fat"]{background:var(--accent-coral)}
+.track-focus .button.primary{width:100%}
+@media (prefers-reduced-motion:reduce){.app-shell,.theme-track [data-lane]{transition:none}.track-focus{animation:none}}
+/* Im Fokus wird die ganze Runde über der Karte sichtbar */
+.theme-track{overflow:visible;transform-origin:50% 0;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+body.track-focusing .theme-track{transform:translateY(2vh) scale(.5)}
+body.track-focusing .lane-base.is-focus{stroke-width:5}
+body.track-focusing .lane-fill.is-focus{stroke-width:12}
+@media (prefers-reduced-motion:reduce){.theme-track{transition:none}}

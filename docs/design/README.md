@@ -8,6 +8,7 @@ Nouri nutzt das Glas-Design „A2 · Schwarzes Glas“:
 - Kacheln auf Startseite und im Tagebuch dunkel und leicht durchsichtig (70 % Schwarz mit Weichzeichner), die Laufbahn scheint durch
 - Icons und Hauptaktionen (Erfassen, aktiver Tab, Einstellungen) in weißem Glas
 - Farbakzente: Kalorienring Limette → Himmelblau, Makros Blau / Orange / Koralle
+- Laufbahn-Fokus: Ein Tipp auf eine Makro-Kachel oder den Kalorienring holt die Bahnen nach vorne. Die Inhalte treten zurück, die ganze Runde erscheint verkleinert, die gewählte Bahn leuchtet, das fehlende Stück ist gepunktet. Eine Karte zeigt „noch X g“, „gegessen von Ziel · %“ und alle vier Ziele zum Umschalten. Schließen mit „Fertig“, Escape oder Tipp daneben.
 - Tagebuch nach Mahlzeiten gegliedert: Frühstück, Mittagessen, Abendessen, Snack – je mit Kalorien-Summe und Plus-Knopf, der das Formular mit der passenden Kategorie öffnet
 - Schrift: Plus Jakarta Sans (lokal ausgeliefert), Zahlen und Überschriften kräftig (800) und eng gesetzt
 - Kacheln: große Karten 28 px Rundung, kleine 20 px, feiner heller Rand, tiefer Schatten
@@ -21,7 +22,8 @@ Umgesetzt in `web/theme.css` (wird nach `web/style.css` geladen). Aufbau und Fun
 - `Laufbahn.dc.html`, `Puls.dc.html`, `Formen.dc.html` – alternative Hintergrund-Ideen
 - `Main.dc.html` (A · Frisch), `Kraft.dc.html` (B), `Sanft.dc.html` (C) – frühere Richtungen
 - `canvas.json` – Anordnung der Entwürfe
-- `app-screens-mahlzeiten.png` – aktueller Stand: Startseite, Tagebuch nach Mahlzeiten, leerer Tag
+- `app-screens-laufbahn-fokus.png` – Startseite, Laufbahn-Fokus für Protein und für Kalorien
+- `app-screens-mahlzeiten.png` – Startseite, Tagebuch nach Mahlzeiten, leerer Tag
 - `app-screens-transparent.png` – durchsichtige Kacheln, ohne Spiegeleffekte
 - `app-screens-schrift.png` – Startseite, Tagebuch, Einstellungen mit neuer Schrift
 - `app-screens-laufbahn-fuellstand.png` – Beispieltag (Bahnen knapp halb gefüllt) und leerer Tag
