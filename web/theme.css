@@ -15,28 +15,21 @@
 }
 
 /* ---------- Hintergrund ---------- */
-html,body{background:#37373c}
+html{background:#2d2f35}
+body{background:transparent}
 body{color:var(--ink)}
 .ambient-shape{display:none}
 .theme-backdrop{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
-  background:radial-gradient(120% 70% at 15% 0%,#6a6a72 0%,rgba(106,106,114,0) 60%),linear-gradient(170deg,#56565d 0%,#46464c 55%,#37373c 100%)}
+  background:linear-gradient(170deg,#4a4c55 0%,#3b3d44 50%,#2d2f35 100%)}
+/* Glasig ohne Milchschleier: nur feine, scharfe Spiegelkanten */
 .theme-backdrop:after{content:'';position:absolute;inset:0;
-  background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 42%,rgba(255,255,255,0) 54%),linear-gradient(115deg,rgba(255,255,255,0) 58%,rgba(255,255,255,.035) 64%,rgba(255,255,255,0) 70%)}
-.theme-lines{position:absolute;inset:-20px 0;width:100%;height:calc(100% + 40px);animation:nouri-lines 16s ease-in-out infinite}
-.theme-band{position:absolute;left:-15vw;width:130vw;overflow:visible}
-.band-a{top:16%;height:24vh;animation:nouri-wave-a 15s ease-in-out infinite}
-.band-b{top:48%;height:26vh;animation:nouri-wave-b 19s ease-in-out infinite}
-.band-c{top:76%;height:22vh;animation:nouri-wave-c 17s ease-in-out infinite}
-.theme-spark{position:absolute;width:7px;height:7px;border-radius:50%;animation:nouri-spark 3.4s ease-in-out infinite}
-.spark-1{left:80%;top:14%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,.6)}
-.spark-2{left:11%;top:50%;background:var(--accent-lime);box-shadow:0 0 10px 3px rgba(226,251,122,.6);animation-delay:1s}
-.spark-3{left:76%;top:72%;background:var(--accent-violet);box-shadow:0 0 10px 3px rgba(157,140,255,.6);animation-delay:2s}
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.07) 38.3%,rgba(255,255,255,.07) 39.4%,transparent 39.7%),linear-gradient(115deg,transparent 62%,rgba(255,255,255,.045) 62.2%,rgba(255,255,255,.045) 62.8%,transparent 63%)}
+/* Laufbahn: Stadion-Bahnen mit farbigen Lichtspuren, eine pro Makro */
+.theme-track{position:absolute;inset:0;width:100%;height:100%}
+.lane{animation:nouri-run linear infinite}
+.lane-1{animation-duration:9s}.lane-2{animation-duration:11s}.lane-3{animation-duration:13s}.lane-4{animation-duration:15s}
+@keyframes nouri-run{from{stroke-dashoffset:0}to{stroke-dashoffset:-1400}}
 
-@keyframes nouri-wave-a{0%,100%{transform:translate(0,0)}50%{transform:translate(-4vw,2vh)}}
-@keyframes nouri-wave-b{0%,100%{transform:translate(0,0)}50%{transform:translate(4vw,-2vh)}}
-@keyframes nouri-wave-c{0%,100%{transform:translate(0,0)}50%{transform:translate(-3vw,-2.5vh)}}
-@keyframes nouri-lines{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-@keyframes nouri-spark{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
 @keyframes nouri-fade{from{opacity:0}to{opacity:1}}
 @keyframes nouri-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes nouri-ring-in{from{stroke-dashoffset:477.52}}
@@ -171,7 +164,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 
 /* Weniger Effekte, wenn das Gerät darum bittet oder Glas nicht unterstützt */
 @media (prefers-reduced-motion:reduce){
-  .theme-lines,.theme-band,.theme-spark,.calorie-card,.calorie-card:after,#calorie-progress,.macro-card,.last-meal,.capture-cta,.dashboard-secondary,.bottom-nav{animation:none!important}
+  .lane,.calorie-card,.calorie-card:after,#calorie-progress,.macro-card,.last-meal,.capture-cta,.dashboard-secondary,.bottom-nav{animation:none!important}
 }
 @media (prefers-reduced-transparency:reduce){
   .glass,.calorie-card,.macro-card,.latest-meal-card,.last-meal .empty-state,.meal-row,.stat,.analysis-food,.bottom-nav,.scan-capture,dialog{background:#050506;-webkit-backdrop-filter:none;backdrop-filter:none}
@@ -184,3 +177,10 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .icon-button.settings-trigger,.icon-button.settings-trigger:hover{color:#111}
 .day-details>summary:hover,.scan-options>summary:hover{color:#fff}
 .nav-item.active:hover{background:var(--glass-white);color:#111}
+
+/* Tagebuch: glasiger und transparenter, die Laufbahn scheint durch */
+#diary-view .meal-row,#diary-view .glass,#diary-view .details-grid>div,#diary-view .stat,#diary-view .empty-state{
+  background:linear-gradient(160deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 30%,rgba(255,255,255,0) 52%,rgba(255,255,255,.08) 100%),linear-gradient(145deg,rgba(3,3,4,.6) 0%,rgba(3,3,4,.42) 55%,rgba(3,3,4,.52) 100%);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.45),inset 0 -1px 1px rgba(255,255,255,.1),0 10px 26px rgba(0,0,0,.22);
+  -webkit-backdrop-filter:blur(10px) saturate(190%);backdrop-filter:blur(10px) saturate(190%)}
