@@ -260,16 +260,16 @@ body.track-focusing .lane-base.is-focus{stroke-width:5}
 body.track-focusing .lane-fill.is-focus{stroke-width:12}
 @media (prefers-reduced-motion:reduce){.theme-track{transition:none}}
 
-/* Kompakte, rechteckige Fokus-Karte, damit mehr Laufbahn zu sehen ist */
-.track-focus-card{width:min(400px,100%);border-radius:10px;padding:16px}
+/* Kompakte Fokus-Karte (runde Ecken wie die übrigen Karten), damit mehr Laufbahn zu sehen ist */
+.track-focus-card{width:min(400px,100%);border-radius:28px;padding:18px}
 .track-focus-card .eyebrow{display:none}
 .track-focus-card h2{font-size:14px;margin-top:0;color:var(--muted);font-weight:700}
 .track-focus-value{font-size:28px;margin-top:2px}
 .track-focus-card>p{font-size:12px;margin-top:2px}
 .track-legend{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:12px 0}
-.track-legend-row{grid-template-columns:10px 1fr;grid-template-rows:auto auto;column-gap:8px;row-gap:0;padding:7px 10px;border-radius:6px;min-height:44px}
+.track-legend-row{grid-template-columns:10px 1fr;grid-template-rows:auto auto;column-gap:8px;row-gap:0;padding:7px 12px;border-radius:14px;min-height:44px}
 .track-legend-row .track-dot{grid-row:span 2;width:10px;height:10px}
 .track-legend-row span:nth-child(2){font-size:12px;line-height:1.2}
 .track-legend-row span:last-child{font-size:12px;line-height:1.2}
-.track-focus .button.primary{border-radius:8px;min-height:44px;padding-top:10px;padding-bottom:10px}
+.track-focus .button.primary{min-height:44px;padding-top:10px;padding-bottom:10px}
 body.track-focusing .theme-track{transform:translateY(1vh) scale(.68)}
