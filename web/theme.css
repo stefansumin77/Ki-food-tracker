@@ -16,12 +16,12 @@
 }
 
 /* ---------- Hintergrund ---------- */
-html{background:#222634}
+html{background:#24262e}
 body{background:transparent}
 body{color:var(--ink)}
 .ambient-shape{display:none}
 .theme-backdrop{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
-  background:radial-gradient(90% 55% at 50% 0%,rgba(104,120,196,.32) 0%,rgba(104,120,196,0) 70%),linear-gradient(170deg,#3e4458 0%,#2f3445 50%,#222634 100%)}
+  background:radial-gradient(90% 55% at 50% 0%,rgba(128,134,160,.26) 0%,rgba(128,134,160,0) 70%),linear-gradient(170deg,#404350 0%,#31343e 50%,#24262e 100%)}
 /* Laufbahn: Stadion-Bahnen mit farbigen Lichtspuren, eine pro Makro */
 .theme-track{position:absolute;inset:0;width:100%;height:100%}
 /* Die Bahnen füllen sich im Lauf des Tages: außen Kalorien, dann Protein, Kohlenhydrate, Fett.
