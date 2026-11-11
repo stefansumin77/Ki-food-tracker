@@ -11,10 +11,21 @@ command = "node scripts/build.mjs"
 [vars]
 # Wer angemeldet ist, entscheidet der Server. Ohne gültigen Modus gibt es keine Identität
 # und alle persönlichen Funktionen antworten mit 401 (sicherer Standard).
-# Werte: "sites" (nur hinter ChatGPT Sites), "local-dev" (nur localhost).
-# Die eigene Magic-Link-Anmeldung folgt in Stufe 1.
-AUTH_MODE = "disabled"
+# Werte: "magic-link" (Anmeldung per E-Mail-Link, Standard), "sites" (nur hinter
+# ChatGPT Sites), "local-dev" (fester Testbenutzer, nur localhost).
+AUTH_MODE = "magic-link"
+# Öffentliche Adresse der App, z. B. "https://app.nouri.de". Links in Anmelde-E-Mails
+# zeigen immer hierhin. Leer = Anmeldung nur lokal auf localhost möglich.
+APP_ORIGIN = ""
 OPENAI_MODEL = "gpt-4.1-mini"
 
 # Geheimnisse NIE hier eintragen. Lokal: Datei .dev.vars (siehe .dev.vars.example).
 # Produktiv: `wrangler secret put OPENAI_API_KEY`
+
+# Datenbank (Cloudflare D1). Lokal simuliert `wrangler dev` sie automatisch.
+# Die echte database_id wird erst in Stufe 6 (Staging) mit `wrangler d1 create nouri` erzeugt.
+[[d1_databases]]
+binding = "DB"
+database_name = "nouri"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"

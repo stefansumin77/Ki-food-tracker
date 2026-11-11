@@ -7,7 +7,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node scripts/test.mjs",
-    "dev": "node scripts/build.mjs && wrangler dev"
+    "dev": "node scripts/build.mjs && wrangler d1 migrations apply nouri --local && wrangler dev",
+    "db:migrate:local": "wrangler d1 migrations apply nouri --local"
   },
   "devDependencies": {
     "esbuild": "^0.28.2",

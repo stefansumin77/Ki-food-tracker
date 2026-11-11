@@ -1,4 +1,5 @@
-import { apiJson, apiFailure, authenticatedUser, validateRequestOrigin, enforceRateLimit } from './security.mjs';
+import { apiJson, apiFailure, validateRequestOrigin, enforceRateLimit } from './security.mjs';
+import { AUTH_ROUTES, handleAuth, resolveAccount, loginAvailable } from './auth.mjs';
 import { readImageRequest, detectFoods } from './vision.mjs';
 import { handleProductRequest } from './products.mjs';
 
@@ -16,16 +17,19 @@ export async function handleApi(request, env = {}, ctx) {
   const path = new URL(request.url).pathname;
   const analysis = ['/api/analyze', '/api/fridge/analyze'].includes(path);
   const products = path === '/api/products' || path.startsWith('/api/products/') || path === '/api/foods';
-  if (!analysis && !products && path !== '/api/config' && path !== '/api/session') return apiFailure('Diese Funktion wurde nicht gefunden.', 404, 'not_found');
+  const auth = AUTH_ROUTES.includes(path);
+  if (!analysis && !products && !auth && path !== '/api/config' && path !== '/api/session') return apiFailure('Diese Funktion wurde nicht gefunden.', 404, 'not_found');
   if (!validateRequestOrigin(request)) return apiFailure('Diese Anfrage ist nicht erlaubt.', 403, 'forbidden_origin');
+  if (auth) return handleAuth(request, env, path);
   const method = analysis ? 'POST' : 'GET';
   if (request.method !== method) return apiFailure('Diese Anfrage wird nicht unterstützt.', 405, 'method_not_allowed', { allow: method });
-  if (path === '/api/config') return apiJson({ aiAvailable: typeof env.OPENAI_API_KEY === 'string' && Boolean(env.OPENAI_API_KEY.trim()) });
-  const userId = authenticatedUser(request, env);
+  if (path === '/api/config') return apiJson({ aiAvailable: typeof env.OPENAI_API_KEY === 'string' && Boolean(env.OPENAI_API_KEY.trim()), ...(env.AUTH_MODE === 'magic-link' ? { login: loginAvailable(request, env) ? 'magic-link' : 'unavailable' } : {}) });
+  const account = await resolveAccount(request, env);
+  const userId = account?.id || null;
   if (!userId) return apiFailure('Bitte melde dich an, um diese Funktion zu verwenden.', 401, 'authentication_required');
   const limited = await enforceRateLimit(env, userId, analysis ? 'ai' : products ? 'products' : 'session');
   if (limited) return limited;
-  if (path === '/api/session') return apiJson({ userId });
+  if (path === '/api/session') return apiJson(account.email ? { userId, email: account.email } : { userId });
   if (products) {
     try { return await handleProductRequest(request, env, ctx); }
     catch { return apiFailure('Die Lebensmitteldatenbank ist gerade nicht erreichbar. Bitte versuche es erneut.', 502, 'nutrition_provider_error'); }

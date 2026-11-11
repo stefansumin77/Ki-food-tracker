@@ -10,7 +10,7 @@ Stand: 11.11.2026. Kostenpflichtige Dienste werden nur nach ausdrücklicher Zust
 | KI-Modell | OpenAI GPT-4.1 mini (vorerst), Schlüssel nur als Server-Secret |
 | Anmeldung | Magic Link per E-Mail (später zusätzlich Passkeys) |
 | Bezahlung | Stripe-Abo, 5,99 € pro Monat, 3 Tage Testphase |
-| Tageswechsel für Kontingente | Mitternacht Europe/Berlin (Vorschlag, noch zu bestätigen) |
+| Tageswechsel für Kontingente | Mitternacht Europe/Berlin |
 
 ## Funktionen: Free und Premium
 
@@ -32,7 +32,7 @@ Stand: 11.11.2026. Kostenpflichtige Dienste werden nur nach ausdrücklicher Zust
 | Stufe | Inhalt | Status |
 |---|---|---|
 | 0 Fundament | Cloudflare-Konfiguration, Build ohne Sites, sichere Standard-Anmeldung, lokale Entwicklung, Schrift selbst gehostet, Tests in GitHub Actions | erledigt |
-| 1 Konten | Magic Link, Sitzungen in D1, Abmelden, Konto löschen | offen |
+| 1 Konten | Magic Link, Sitzungen in D1, Abmelden, Konto löschen | erledigt (E-Mail-Versand lokal nur in der Konsole) |
 | 2 Daten auf dem Server | Abgleich von Tagebuch und Feature-Daten, Übernahme der Browserdaten | offen |
 | 3 Pläne und Kontingente | Free/Premium-Prüfung, 30 Scans pro Tag, Anzeige der Rest-Scans, Premium-Sperren in der Oberfläche | offen |
 | 4 Stripe (Testmodus) | Checkout, Kundenportal, Webhook mit Signaturprüfung und Idempotenz, Testphase, Kündigungsbutton | offen |

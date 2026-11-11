@@ -1,6 +1,13 @@
 # Kopiere diese Datei nach .dev.vars (wird nicht eingecheckt) und trage lokale Werte ein.
 # Nur für `npm run dev` auf deinem Rechner.
-AUTH_MODE=local-dev
-DEV_USER_ID=local-dev-user
+
+# Anmeldung per E-Mail-Link. Lokal erscheinen die Links in der Konsole statt in einer E-Mail.
+AUTH_MODE=magic-link
+EMAIL_MODE=console
+
+# Alternative ohne Anmeldung: fester Testbenutzer (nur localhost)
+# AUTH_MODE=local-dev
+# DEV_USER_ID=local-dev-user
+
 # Optional, nur wenn du die echte Fotoanalyse lokal testen willst (verursacht Kosten bei OpenAI):
 OPENAI_API_KEY=

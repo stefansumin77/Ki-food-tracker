@@ -1,7 +1,7 @@
 const LOCAL_WINDOW_MS = 60_000;
 const MAX_LOCAL_IDENTITIES = 5000;
 const localWindows = new Map();
-const LIMITS = Object.freeze({ ai: 10, products: 60, session: 60 });
+const LIMITS = Object.freeze({ ai: 10, products: 60, session: 60, login: 5 });
 
 export function apiJson(body, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(body), {
