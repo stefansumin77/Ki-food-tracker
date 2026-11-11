@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Nouri – Hintergrund-Idee: Puls</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes nouri-beat{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@keyframes nouri-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: radial-gradient(120% 70% at 15% 0%, #6A6A72 0%, rgba(106,106,114,0) 60%), linear-gradient(170deg, #56565D 0%, #46464C 55%, #37373C 100%); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #FFFFFF; position: relative; overflow: hidden; display: flex; flex-direction: column">
+  <svg aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" style="position: absolute; inset: 0">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-10 230 H90 L110 200 L130 270 L155 150 L180 300 L200 230 H400" stroke="rgba(226,251,122,0.18)" stroke-width="10"/>
+      <path d="M-10 230 H90 L110 200 L130 270 L155 150 L180 300 L200 230 H400" stroke="#E2FB7A" stroke-width="3.5" stroke-dasharray="260 640" style="animation: nouri-beat 3.2s linear infinite"/>
+      <path d="M-10 500 H170 L190 470 L210 540 L235 420 L260 570 L280 500 H400" stroke="rgba(157,140,255,0.18)" stroke-width="10"/>
+      <path d="M-10 500 H170 L190 470 L210 540 L235 420 L260 570 L280 500 H400" stroke="#9D8CFF" stroke-width="3.5" stroke-dasharray="260 640" style="animation: nouri-beat 3.8s 0.6s linear infinite"/>
+      <path d="M-10 740 H60 L80 715 L100 770 L125 670 L150 800 L170 740 H400" stroke="rgba(255,111,138,0.18)" stroke-width="10"/>
+      <path d="M-10 740 H60 L80 715 L100 770 L125 670 L150 800 L170 740 H400" stroke="#FF6F8A" stroke-width="3.5" stroke-dasharray="260 640" style="animation: nouri-beat 3.5s 1.2s linear infinite"/>
+    </g>
+  </svg>
+
+  <div style="position: relative; padding: 24px 24px 8px; display: flex; flex-direction: column; gap: 2px">
+    <span style="font-size: 13px; color: #E4E4E7; font-weight: 600">Dienstag, 11. November</span>
+    <span style="font-size: 26px; font-weight: 800; letter-spacing: -0.8px">Hallo, Anna</span>
+  </div>
+  <div style="position: relative; margin: 12px 24px 0; padding: 20px; border-radius: 28px; background: linear-gradient(160deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0) 52%, rgba(255,255,255,0.07) 100%), linear-gradient(145deg, rgba(3,3,4,0.96) 0%, rgba(3,3,4,0.9) 55%, rgba(3,3,4,0.94) 100%); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border: 1px solid rgba(255,255,255,0.16); box-shadow: inset 0 1px 1px rgba(255,255,255,0.45), 0 18px 40px rgba(0,0,0,0.35); display: flex; align-items: center; gap: 20px; animation: nouri-rise 0.7s ease-out both">
+    <div style="display: flex; flex-direction: column"><span style="font-size: 40px; font-weight: 800; letter-spacing: -1.4px; line-height: 1">1.072</span><span style="font-size: 13px; color: #D4D4D8">kcal übrig von 2.000</span></div>
+  </div>
+  <div style="position: relative; margin: 12px 24px 0; padding: 14px 16px; border-radius: 20px; background: linear-gradient(160deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0) 52%, rgba(255,255,255,0.07) 100%), linear-gradient(145deg, rgba(3,3,4,0.96) 0%, rgba(3,3,4,0.9) 55%, rgba(3,3,4,0.94) 100%); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border: 1px solid rgba(255,255,255,0.16); box-shadow: inset 0 1px 1px rgba(255,255,255,0.45), 0 10px 26px rgba(0,0,0,0.3); display: flex; justify-content: space-between; animation: nouri-rise 0.7s 0.15s ease-out both">
+    <span style="font-size: 14px; font-weight: 700">Protein 53 g</span><span style="font-size: 14px; font-weight: 700">KH 109 g</span><span style="font-size: 14px; font-weight: 700">Fett 29 g</span>
+  </div>
+
+  <div style="flex: 1"></div>
+  <div style="position: relative; margin: 0 24px 16px; padding: 14px 16px; border-radius: 20px; background: rgba(3,3,4,0.9); border: 1px solid rgba(255,255,255,0.16)">
+    <span style="font-size: 15px; font-weight: 800">Idee: Puls</span>
+    <p style="margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: #D4D4D8">Drei leuchtende Herzschlag-Linien, über die immer wieder ein Lichtimpuls läuft – lebendig, sportlich, ohne vom Inhalt abzulenken.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

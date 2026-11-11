@@ -58,4 +58,6 @@ API-Schlüssel gehören nie in den Code, in `wrangler.toml` oder in den Browser.
 - `tests/`, `server/*.test.mjs` – automatische Tests (laufen auch in GitHub Actions)
 - `docs/` – Roadmap, Datenquellen, Hinweise aus dem ursprünglichen Export
 
+Das Glas-Design steckt in `web/theme.css`, Entwürfe und Bildschirmfotos liegen in `docs/design/`.
+
 Die Schrift DM Sans liegt unter `web/assets/fonts/` (SIL Open Font License 1.1).

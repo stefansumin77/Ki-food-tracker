@@ -11,6 +11,7 @@ Stand: 11.11.2026. Kostenpflichtige Dienste werden nur nach ausdrücklicher Zust
 | Anmeldung | Magic Link per E-Mail (später zusätzlich Passkeys) |
 | Bezahlung | Stripe-Abo, 5,99 € pro Monat, 3 Tage Testphase |
 | Tageswechsel für Kontingente | Mitternacht Europe/Berlin |
+| Design | Schwarzes Glas auf dunkelgrauem Hintergrund mit Farbbändern (siehe docs/design) |
 
 ## Funktionen: Free und Premium
 
