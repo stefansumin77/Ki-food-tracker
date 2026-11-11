@@ -47,11 +47,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .scan-status.ready{color:#e4e4e7}
 
 /* Flächen aus schwarzem Glas */
-.glass,.calorie-card,.macro-card,.latest-meal-card,.last-meal .empty-state,.meal-row,.stat,.analysis-food,.bottom-nav,.scan-capture{
-  background:var(--glass-dark);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);
-  -webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}
+.glass,.calorie-card,.macro-card,.latest-meal-card,.last-meal .empty-state,.meal-row,.stat,.analysis-food,.bottom-nav,.scan-capture,.details-grid>div,#diary-view .empty-state{
+  background:var(--glass-clear);border:1px solid rgba(255,255,255,.18);box-shadow:var(--glass-shadow);
+  -webkit-backdrop-filter:blur(10px) saturate(170%);backdrop-filter:blur(10px) saturate(170%)}
 .glass:before,.latest-meal-card:before,.analysis-food:before,.scan-preview:after{border-color:rgba(255,255,255,.06)}
-.latest-meal-card:hover{background:rgba(20,20,24,.6)}
 
 /* Icons und Hauptaktionen in weißem Glas */
 .settings-trigger,.modal-heading>.icon-button,.meal-thumb,.latest-meal-placeholder,.water-controls button,.nav-item.active,.primary,.shutter,.sample-photo-label{
@@ -99,7 +98,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .meal-category,.meal-info p,.meal-calories small{color:var(--muted)}
 .sample-badge{color:#e4e4e7;background:rgba(255,255,255,.12)}
 .meal-row .icon-button{color:var(--soft)}
-.details-grid>div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
 .details-grid span{color:var(--muted)}
 .stat small,.stat strong span{color:var(--muted)}
 
@@ -117,7 +115,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .dot{background:var(--accent-lime)}
 
 /* Erfassen und Analyse */
-.scan-capture{background:rgba(3,3,4,.7)}
 .analysis-macros{border-top-color:rgba(255,255,255,.12)}
 .analysis-macros>div+div{border-left-color:rgba(255,255,255,.12)}
 .analysis-item{border-bottom-color:rgba(255,255,255,.1)}
@@ -142,7 +139,7 @@ footer button{color:#d4d4d8}
 .danger:hover{background:rgba(255,111,138,.28)}
 
 /* Dialoge und Formulare */
-dialog{background:rgba(6,6,8,.97);color:#f4f4f5;border:1px solid var(--glass-edge);box-shadow:0 24px 80px rgba(0,0,0,.6)}
+dialog{background:rgba(3,3,4,.7);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);color:#f4f4f5;border:1px solid var(--glass-edge);box-shadow:0 24px 80px rgba(0,0,0,.6)}
 dialog::backdrop{background:rgba(0,0,0,.45)}
 #modal-content p{color:#c9c9d0}
 .field{color:#c9c9d0}
@@ -179,12 +176,8 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .day-details>summary:hover,.scan-options>summary:hover{color:#fff}
 .nav-item.active:hover{background:var(--glass-white);color:#111}
 
-/* Startseite und Tagebuch: durchsichtige Kacheln, die Laufbahn scheint durch (ohne Spiegeleffekte) */
-#dashboard-view .calorie-card,#dashboard-view .macro-card,#dashboard-view .latest-meal-card,#dashboard-view .glass,#dashboard-view .last-meal .empty-state,
-#diary-view .meal-row,#diary-view .glass,#diary-view .details-grid>div,#diary-view .stat,#diary-view .empty-state{
-  background:var(--glass-clear);border:1px solid rgba(255,255,255,.18);
-  -webkit-backdrop-filter:blur(10px) saturate(170%);backdrop-filter:blur(10px) saturate(170%)}
-#dashboard-view .latest-meal-card:hover{background:rgba(3,3,4,.8)}
+/* Alle Kacheln: gleicher, leicht durchsichtiger Look wie auf der Startseite */
+.latest-meal-card:hover{background:rgba(3,3,4,.8)}
 
 /* Schrift und Kacheln wie im Laufbahn-Entwurf: Plus Jakarta Sans, kräftige, eng gesetzte Zahlen */
 body{font-weight:500}
@@ -233,7 +226,7 @@ body.track-focusing .theme-track [data-lane]:not(.is-focus){opacity:.14}
 body.track-focusing .lane-base.is-focus{stroke:rgba(255,255,255,.6);stroke-width:3;stroke-dasharray:.6 1.4}
 body.track-focusing .lane-fill.is-focus{filter:drop-shadow(0 0 8px currentColor)}
 .track-focus{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom));animation:nouri-fade .3s ease-out}
-.track-focus-card{width:min(420px,100%);background:rgba(6,6,8,.92);border:1px solid var(--glass-edge);border-radius:28px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.track-focus-card{width:min(420px,100%);background:var(--glass-clear);border:1px solid var(--glass-edge);border-radius:28px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .track-focus-card h2{font-size:20px;font-weight:800;margin-top:6px}
 .track-focus-value{display:block;font-size:34px;font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-top:4px}
 .track-focus-value[data-lane="kcal"]{color:var(--accent-lime)}
@@ -273,3 +266,4 @@ body.track-focusing .lane-fill.is-focus{stroke-width:12}
 .track-legend-row span:last-child{font-size:12px;line-height:1.2}
 .track-focus .button.primary{min-height:44px;padding-top:10px;padding-bottom:10px}
 body.track-focusing .theme-track{transform:translateY(1vh) scale(.68)}
+#diary-view .empty-state,.last-meal .empty-state{border-radius:20px}
