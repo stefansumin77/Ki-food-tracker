@@ -60,4 +60,4 @@ API-Schlüssel gehören nie in den Code, in `wrangler.toml` oder in den Browser.
 
 Das Glas-Design steckt in `web/theme.css`, Entwürfe und Bildschirmfotos liegen in `docs/design/`.
 
-Die Schrift DM Sans liegt unter `web/assets/fonts/` (SIL Open Font License 1.1).
+Die Schrift Plus Jakarta Sans liegt unter `web/assets/fonts/` (SIL Open Font License 1.1).
