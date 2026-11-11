@@ -8,7 +8,7 @@ Nouri nutzt das Glas-Design „A2 · Schwarzes Glas“:
 - Kacheln auf Startseite und im Tagebuch dunkel und leicht durchsichtig (70 % Schwarz mit Weichzeichner), die Laufbahn scheint durch
 - Icons und Hauptaktionen (Erfassen, aktiver Tab, Einstellungen) in weißem Glas
 - Farbakzente: Kalorienring Limette → Himmelblau, Makros Blau / Orange / Koralle
-- Laufbahn-Fokus: Ein Tipp auf eine Makro-Kachel oder den Kalorienring holt die Bahnen nach vorne. Die Inhalte treten zurück, die ganze Runde erscheint verkleinert, die gewählte Bahn leuchtet, das fehlende Stück ist gepunktet. Eine Karte zeigt „noch X g“, „gegessen von Ziel · %“ und alle vier Ziele zum Umschalten. Schließen mit „Fertig“, Escape oder Tipp daneben.
+- Laufbahn-Fokus: Ein Tipp auf eine Makro-Kachel oder den Kalorienring holt die Bahnen nach vorne. Die Inhalte treten zurück, die ganze Runde erscheint verkleinert, die gewählte Bahn leuchtet, das fehlende Stück ist gepunktet. Eine kompakte, rechteckige Karte zeigt „noch X g“, „gegessen von Ziel · %“ und alle vier Ziele (2 × 2) zum Umschalten. Schließen mit „Fertig“, Escape oder Tipp daneben.
 - Tagebuch nach Mahlzeiten gegliedert: Frühstück, Mittagessen, Abendessen, Snack – je mit Kalorien-Summe und Plus-Knopf, der das Formular mit der passenden Kategorie öffnet
 - Schrift: Plus Jakarta Sans (lokal ausgeliefert), Zahlen und Überschriften kräftig (800) und eng gesetzt
 - Kacheln: große Karten 28 px Rundung, kleine 20 px, feiner heller Rand, tiefer Schatten
