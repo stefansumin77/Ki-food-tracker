@@ -4,7 +4,7 @@ import { handleApi } from './api.mjs';
 import { resetLocalRateLimits } from './security.mjs';
 
 const image='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jYyQAAAAASUVORK5CYII=';
-const env={OPENAI_API_KEY:'test-secret-do-not-expose'};
+const env={AUTH_MODE:'sites',OPENAI_API_KEY:'test-secret-do-not-expose'};
 const recognized={name:'Gemüse mit Reis',note:'Bitte Lebensmittel und Menge prüfen.',items:[{name:'unbekanntes Gemüse',grams:150,cookingMethod:'gekocht',recognitionConfidence:'medium',quantityConfidence:'low'}],questions:[{text:'Wie viel Öl wurde verwendet?',kind:'oil'}]};
 function request(body={image},options={}){return new Request('https://nouri.example'+(options.path||'/api/analyze'),{method:'POST',headers:{'content-type':'application/json',origin:'https://nouri.example','oai-authenticated-user-id':'test-owner',...options.headers},body:JSON.stringify(body)});}
 function provider(result=recognized){return Response.json({status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify(result)}]}]});}
@@ -23,7 +23,7 @@ test('protected endpoints reject missing identity and cross-origin mutation befo
  assert.equal((await handleApi(new Request('https://nouri.example/api/products/4000000000000'),env)).status,401);
 });
 test('unconfigured AI never simulates a food result for meals or fridge scans',async()=>{
- for(const path of ['/api/analyze','/api/fridge/analyze']){const response=await handleApi(request({image},{path}),{});assert.equal(response.status,503);const body=await response.json();assert.equal(body.code,'ai_not_configured');assert.equal(body.items,undefined);}
+ for(const path of ['/api/analyze','/api/fridge/analyze']){const response=await handleApi(request({image},{path}),{AUTH_MODE:'sites'});assert.equal(response.status,503);const body=await response.json();assert.equal(body.code,'ai_not_configured');assert.equal(body.items,undefined);}
 });
 test('unsupported routes and methods return bounded structured errors',async()=>{
  assert.equal((await handleApi(new Request('https://nouri.example/api/missing'),env)).status,404);

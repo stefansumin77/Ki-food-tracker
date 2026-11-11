@@ -13,7 +13,7 @@ export default {
   let bytes=Uint8Array.from(atob(asset.data),c=>c.charCodeAt(0));
   const document=asset.type.startsWith('text/html');
   if(document){
-   const identity=authenticatedUser(request);
+   const identity=authenticatedUser(request,env);
    const meta=`<meta name="nouri-user-id" content="${escapeAttribute(identity||'')}">`;
    bytes=new TextEncoder().encode(new TextDecoder().decode(bytes).replace('</head>',meta+'</head>'));
   }
@@ -24,7 +24,7 @@ export default {
    'x-content-type-options':'nosniff',
    'referrer-policy':'same-origin',
    'permissions-policy':'camera=(self), microphone=(), geolocation=()',
-   'content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+   'content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
   }});
  }
 };

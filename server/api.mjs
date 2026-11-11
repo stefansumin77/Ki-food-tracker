@@ -21,7 +21,7 @@ export async function handleApi(request, env = {}, ctx) {
   const method = analysis ? 'POST' : 'GET';
   if (request.method !== method) return apiFailure('Diese Anfrage wird nicht unterstützt.', 405, 'method_not_allowed', { allow: method });
   if (path === '/api/config') return apiJson({ aiAvailable: typeof env.OPENAI_API_KEY === 'string' && Boolean(env.OPENAI_API_KEY.trim()) });
-  const userId = authenticatedUser(request);
+  const userId = authenticatedUser(request, env);
   if (!userId) return apiFailure('Bitte melde dich an, um diese Funktion zu verwenden.', 401, 'authentication_required');
   const limited = await enforceRateLimit(env, userId, analysis ? 'ai' : products ? 'products' : 'session');
   if (limited) return limited;

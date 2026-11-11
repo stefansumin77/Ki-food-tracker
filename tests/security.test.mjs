@@ -5,10 +5,27 @@ import { authenticatedUser, validateRequestOrigin, enforceRateLimit, resetLocalR
 function request(headers = {}, method = 'POST') { return new Request('https://nouri.example/api/analyze', { method, headers }); }
 
 test('identity must come from Sites headers, never request data or fabricated defaults', () => {
-  assert.equal(authenticatedUser(request()), null);
-  assert.equal(authenticatedUser(request({'x-user-id':'other'})), null);
-  assert.equal(authenticatedUser(request({'oai-authenticated-user-id':'owner-123'})), 'owner-123');
-  assert.equal(authenticatedUser(request({'oai-authenticated-user-id':'x'.repeat(257)})), null);
+  const sites = { AUTH_MODE: 'sites' };
+  assert.equal(authenticatedUser(request(), sites), null);
+  assert.equal(authenticatedUser(request({'x-user-id':'other'}), sites), null);
+  assert.equal(authenticatedUser(request({'oai-authenticated-user-id':'owner-123'}), sites), 'owner-123');
+  assert.equal(authenticatedUser(request({'oai-authenticated-user-id':'x'.repeat(257)}), sites), null);
+});
+
+test('without an explicit auth mode the Sites header is never trusted', () => {
+  for (const env of [undefined, {}, { AUTH_MODE: '' }, { AUTH_MODE: 'SITES' }, { AUTH_MODE: 'unknown' }]) {
+    assert.equal(authenticatedUser(request({'oai-authenticated-user-id':'attacker'}), env), null);
+  }
+});
+
+test('local development identity only works on localhost', () => {
+  const dev = { AUTH_MODE: 'local-dev' };
+  const at = (host, headers = {}) => new Request(`http://${host}/api/session`, { headers });
+  assert.equal(authenticatedUser(at('localhost:8787'), dev), 'local-dev-user');
+  assert.equal(authenticatedUser(at('127.0.0.1:8787'), { ...dev, DEV_USER_ID: 'tester' }), 'tester');
+  assert.equal(authenticatedUser(at('nouri.example'), dev), null);
+  assert.equal(authenticatedUser(at('localhost.attacker.example'), dev), null);
+  assert.equal(authenticatedUser(at('nouri.example', {'oai-authenticated-user-id':'x'}), dev), null);
 });
 test('mutations require same-origin evidence and cross-site requests are rejected', () => {
   assert.equal(validateRequestOrigin(request()), false);

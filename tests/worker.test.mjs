@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import worker from '../dist/server/index.js';
 const base='https://nouri.example';
-const get=(path,options)=>worker.fetch(new Request(base+path,options),{});
+const get=(path,options)=>worker.fetch(new Request(base+path,options),{AUTH_MODE:'sites'});
 const authenticatedHeaders = (userId = 'worker-user') => ({ origin: base, 'oai-authenticated-user-id': userId });
 test('dashboard and all local frontend references are served from the Worker',async()=>{
  const response=await get('/');assert.equal(response.status,200);

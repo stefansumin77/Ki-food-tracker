@@ -6,9 +6,11 @@
   "description": "Privates Ernährungstagebuch mit KI-Fotoanalyse",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node scripts/test.mjs"
+    "test": "node scripts/test.mjs",
+    "dev": "node scripts/build.mjs && wrangler dev"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "esbuild": "^0.28.2",
+    "wrangler": "4.152.0"
   }
 }

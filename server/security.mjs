@@ -20,11 +20,27 @@ export function apiFailure(message, status, code, extraHeaders = {}) {
   return apiJson({ error: message, code }, status, extraHeaders);
 }
 
-// These identity headers are supplied by Sites dispatch, not browser JavaScript.
+const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
+const validIdentity = id => typeof id === 'string' && id.length > 0 && id.length <= 256 && id === id.trim() && !/[\u0000-\u001f\u007f]/.test(id);
+
+// Identity is decided by the server configuration (env.AUTH_MODE), never by the browser.
+// - 'sites': ChatGPT Sites strips client identity headers and sets oai-authenticated-user-id.
+//   Only safe behind Sites. On any other host a client could send this header itself.
+// - 'local-dev': fixed development identity, accepted only for localhost requests.
+// - anything else (including unset): no identity. Personal APIs answer 401 (fail closed).
 // Never accept identity from a body, query string or client-supplied storage key.
-export function authenticatedUser(request) {
-  const id = request.headers.get('oai-authenticated-user-id');
-  return typeof id === 'string' && id.length > 0 && id.length <= 256 && id === id.trim() && !/[\u0000-\u001f\u007f]/.test(id) ? id : null;
+export function authenticatedUser(request, env = {}) {
+  const mode = env?.AUTH_MODE;
+  if (mode === 'sites') {
+    const id = request.headers.get('oai-authenticated-user-id');
+    return validIdentity(id) ? id : null;
+  }
+  if (mode === 'local-dev') {
+    if (!LOCAL_HOSTS.has(new URL(request.url).hostname)) return null;
+    const id = env.DEV_USER_ID || 'local-dev-user';
+    return validIdentity(id) ? id : null;
+  }
+  return null;
 }
 
 export function validateRequestOrigin(request) {

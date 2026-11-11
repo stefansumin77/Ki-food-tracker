@@ -1,0 +1,20 @@
+# Cloudflare-Workers-Konfiguration für Nouri.
+# Diese Datei aktiviert nichts von selbst. Ein Deployment passiert nur mit `wrangler deploy`
+# nach Anmeldung in einem Cloudflare-Konto (siehe docs/roadmap.md, Stufe 6).
+name = "nouri"
+main = "dist/server/index.js"
+compatibility_date = "2026-10-01"
+
+[build]
+command = "node scripts/build.mjs"
+
+[vars]
+# Wer angemeldet ist, entscheidet der Server. Ohne gültigen Modus gibt es keine Identität
+# und alle persönlichen Funktionen antworten mit 401 (sicherer Standard).
+# Werte: "sites" (nur hinter ChatGPT Sites), "local-dev" (nur localhost).
+# Die eigene Magic-Link-Anmeldung folgt in Stufe 1.
+AUTH_MODE = "disabled"
+OPENAI_MODEL = "gpt-4.1-mini"
+
+# Geheimnisse NIE hier eintragen. Lokal: Datei .dev.vars (siehe .dev.vars.example).
+# Produktiv: `wrangler secret put OPENAI_API_KEY`
