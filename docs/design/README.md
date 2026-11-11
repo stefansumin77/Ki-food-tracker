@@ -3,7 +3,7 @@
 Nouri nutzt das Glas-Design „A2 · Schwarzes Glas“:
 
 - Ganz neutrales Schwarzgrau (ohne Farbstich) mit leichtem Lichtschein von oben, ohne Spiegeleffekte
-- Hintergrund „Laufbahn“: vier Stadion-Bahnen, die sich im Lauf des Tages füllen – außen Kalorien (Limette), dann Protein (Blau), Kohlenhydrate (Orange), Fett (Koralle). 100 % = Tagesziel erreicht, dann leuchtet die Bahn. Darüber läuft auf jeder Bahn eine Lichtspur.
+- Hintergrund „Laufbahn“: vier Stadion-Bahnen, die sich im Lauf des Tages füllen – außen Kalorien (Limette), dann Protein (Blau), Kohlenhydrate (Orange), Fett (Koralle). 100 % = Tagesziel erreicht, dann leuchtet die Bahn. Darüber läuft auf jeder Bahn eine Lichtspur. Alles bewusst verblasst, damit es im Hintergrund bleibt.
 - Navigation und Dialoge aus schwarzem Glas, ohne Glanz oder Spiegelung
 - Kacheln auf Startseite und im Tagebuch dunkel und leicht durchsichtig (70 % Schwarz mit Weichzeichner), die Laufbahn scheint durch
 - Icons und Hauptaktionen (Erfassen, aktiver Tab, Einstellungen) in weißem Glas

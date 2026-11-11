@@ -26,10 +26,10 @@ body{color:var(--ink)}
 .theme-track{position:absolute;inset:0;width:100%;height:100%}
 /* Die Bahnen füllen sich im Lauf des Tages: außen Kalorien, dann Protein, Kohlenhydrate, Fett.
    Der Füllstand kommt aus app.js (renderTrack), 100 % = Tagesziel erreicht. */
-.lane-base{stroke:rgba(255,255,255,.09);stroke-width:2}
-.lane-fill{stroke-width:7;stroke-dasharray:0 100;opacity:.55;transition:stroke-dasharray 1.8s cubic-bezier(.2,.8,.2,1),opacity .6s}
-.lane-fill.complete{opacity:.9;filter:drop-shadow(0 0 6px currentColor)}
-.lane-run{stroke-width:5;stroke-dasharray:5 95;animation:nouri-run linear infinite}
+.lane-base{stroke:rgba(255,255,255,.05);stroke-width:2}
+.lane-fill{stroke-width:7;stroke-dasharray:0 100;opacity:.28;transition:stroke-dasharray 1.8s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.lane-fill.complete{opacity:.45;filter:drop-shadow(0 0 4px currentColor)}
+.lane-run{stroke-width:5;stroke-dasharray:5 95;opacity:.4;animation:nouri-run linear infinite}
 .lane-1{animation-duration:9s}.lane-2{animation-duration:11s}.lane-3{animation-duration:13s}.lane-4{animation-duration:15s}
 @keyframes nouri-run{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
 
