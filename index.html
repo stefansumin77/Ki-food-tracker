@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1f8a3b">
+<title>KI Food Tracker</title>
+<style>
+  :root {
+    --bg:#f4f5f2; --fg:#1d1f1c; --muted:#6b6f69; --card:#fff; --line:#e3e5e0;
+    --accent:#1f8a3b; --accent-fg:#fff; --warn:#c0392b;
+    --p:#3b7dd8; --k:#e0a020; --f:#c2577a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f110e; --fg:#eef0ec; --muted:#9aa095; --card:#1a1d18; --line:#2c3029; --accent:#37b45a; }
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system, system-ui, "Segoe UI", sans-serif; }
+  main { max-width:560px; margin:0 auto; padding:16px 16px 96px; }
+  h1 { font-size:1.4rem; margin:8px 0 12px; }
+  h2 { font-size:1.05rem; margin:0 0 10px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
+  .row { display:flex; gap:10px; align-items:center; }
+  .between { justify-content:space-between; }
+  .muted { color:var(--muted); font-size:.9rem; }
+  button, .btn { font:inherit; border:0; border-radius:12px; padding:12px 16px; cursor:pointer;
+    background:var(--accent); color:var(--accent-fg); font-weight:600; }
+  button.ghost { background:transparent; color:var(--fg); border:1px solid var(--line); font-weight:500; }
+  button.small { padding:6px 10px; font-size:.85rem; }
+  button:disabled { opacity:.5; cursor:default; }
+  input, textarea { font:inherit; width:100%; padding:12px; border-radius:12px;
+    border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  textarea { min-height:80px; resize:vertical; }
+  label { display:block; margin:10px 0 6px; font-size:.9rem; color:var(--muted); }
+  .big { font-size:2.2rem; font-weight:700; line-height:1; }
+  .bar { height:10px; background:var(--line); border-radius:6px; overflow:hidden; margin:10px 0 4px; }
+  .bar > div { height:100%; background:var(--accent); width:0; transition:width .3s; }
+  .bar.over > div { background:var(--warn); }
+  .macros { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; text-align:center; }
+  .macros div { background:var(--bg); border-radius:10px; padding:8px 4px; }
+  .macros b { display:block; font-size:1.1rem; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:4px; }
+  .entry { display:flex; gap:12px; padding:12px 0; border-top:1px solid var(--line); }
+  .entry:first-child { border-top:0; }
+  .entry img { width:56px; height:56px; object-fit:cover; border-radius:10px; flex:none; }
+  .entry .grow { flex:1; min-width:0; }
+  .entry .name { font-weight:600; }
+  .preview { width:100%; max-height:260px; object-fit:cover; border-radius:12px; margin-top:10px; }
+  .hidden { display:none !important; }
+  .error { color:var(--warn); margin-top:10px; }
+  .spinner { width:18px; height:18px; border:3px solid rgba(255,255,255,.4); border-top-color:#fff;
+    border-radius:50%; animation:spin 1s linear infinite; display:inline-block; vertical-align:middle; margin-right:8px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .result-items { margin:8px 0 0; padding-left:18px; }
+  nav.tabs { position:fixed; left:0; right:0; bottom:0; background:var(--card); border-top:1px solid var(--line);
+    display:flex; justify-content:center; gap:4px; padding:8px 16px calc(8px + env(safe-area-inset-bottom)); }
+  nav.tabs button { flex:1; max-width:180px; background:transparent; color:var(--muted); font-weight:600; }
+  nav.tabs button.active { color:var(--accent); background:var(--bg); }
+</style>
+</head>
+<body>
+<main>
+  <!-- Heute -->
+  <section id="view-heute">
+    <div class="row between">
+      <button class="ghost small" id="prevDay" aria-label="Vorheriger Tag">‹</button>
+      <h1 id="dayTitle">Heute</h1>
+      <button class="ghost small" id="nextDay" aria-label="Nächster Tag">›</button>
+    </div>
+
+    <div class="card">
+      <div class="row between">
+        <div>
+          <div class="big" id="kcalTotal">0</div>
+          <div class="muted" id="kcalGoalText">von 2000 kcal</div>
+        </div>
+        <div class="muted" id="kcalLeft"></div>
+      </div>
+      <div class="bar" id="kcalBar"><div></div></div>
+      <div class="macros">
+        <div><span class="dot" style="background:var(--p)"></span><span class="muted">Eiweiß</span><b id="mP">0 g</b></div>
+        <div><span class="dot" style="background:var(--k)"></span><span class="muted">Kohlenh.</span><b id="mK">0 g</b></div>
+        <div><span class="dot" style="background:var(--f)"></span><span class="muted">Fett</span><b id="mF">0 g</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Mahlzeiten</h2>
+      <div id="entries"></div>
+      <p class="muted" id="noEntries">Noch nichts eingetragen.</p>
+    </div>
+  </section>
+
+  <!-- Hinzufügen -->
+  <section id="view-neu" class="hidden">
+    <h1>Mahlzeit erfassen</h1>
+    <div class="card">
+      <label for="photo">Foto (optional)</label>
+      <input type="file" id="photo" accept="image/*" capture="environment">
+      <img id="photoPreview" class="preview hidden" alt="Vorschau">
+      <label for="desc">Beschreibung (optional)</label>
+      <textarea id="desc" placeholder="z. B. 2 Scheiben Vollkornbrot mit Käse und ein Apfel"></textarea>
+      <div style="margin-top:12px"><button id="analyze">KI analysieren lassen</button></div>
+      <div id="analyzeError" class="error hidden"></div>
+    </div>
+
+    <div class="card hidden" id="resultCard">
+      <h2>Ergebnis – bitte prüfen</h2>
+      <label for="rName">Name</label>
+      <input id="rName">
+      <div class="row">
+        <div style="flex:1"><label for="rKcal">kcal</label><input id="rKcal" type="number" inputmode="numeric"></div>
+        <div style="flex:1"><label for="rP">Eiweiß g</label><input id="rP" type="number" inputmode="decimal"></div>
+      </div>
+      <div class="row">
+        <div style="flex:1"><label for="rK">Kohlenh. g</label><input id="rK" type="number" inputmode="decimal"></div>
+        <div style="flex:1"><label for="rF">Fett g</label><input id="rF" type="number" inputmode="decimal"></div>
+      </div>
+      <ul class="result-items muted" id="rItems"></ul>
+      <p class="muted" id="rNote"></p>
+      <div class="row" style="margin-top:12px">
+        <button id="save">Speichern</button>
+        <button class="ghost" id="discard">Verwerfen</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Einstellungen -->
+  <section id="view-einst" class="hidden">
+    <h1>Einstellungen</h1>
+    <div class="card">
+      <label for="goal">Tagesziel (kcal)</label>
+      <input id="goal" type="number" inputmode="numeric">
+      <label for="apiKey">Claude API-Schlüssel</label>
+      <input id="apiKey" type="password" autocomplete="off" placeholder="sk-ant-…">
+      <p class="muted">Den Schlüssel bekommst du unter console.anthropic.com. Er wird nur auf diesem Gerät gespeichert und direkt an die Claude-API gesendet.</p>
+      <button id="saveSettings">Speichern</button>
+      <span class="muted" id="settingsSaved"></span>
+    </div>
+    <div class="card">
+      <h2>Daten</h2>
+      <p class="muted">Deine Einträge liegen nur im Browser dieses Geräts.</p>
+      <div class="row">
+        <button class="ghost" id="export">Exportieren</button>
+        <label class="btn ghost" style="margin:0;color:var(--fg);border:1px solid var(--line);font-weight:500">
+          Importieren <input type="file" id="import" accept="application/json" class="hidden">
+        </label>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="tabs">
+  <button data-view="heute" class="active">Tagebuch</button>
+  <button data-view="neu">Erfassen</button>
+  <button data-view="einst">Einstellungen</button>
+</nav>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
